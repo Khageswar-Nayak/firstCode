@@ -1,42 +1,30 @@
-//console.log("hello");
-//console.log(document.getElementById("main-header"));
-//document.all[15].textContent = "hello";
+var itemList = document.querySelector('#items');
 
-var headerTitle = document.getElementById('header-title');
-headerTitle.style.borderBottom = 'solid 3px #000';
+//console.log(itemList.previousElementSibling);
+itemList.previousElementSibling.style.color='green';
 
-var addItem = document.getElementsByClassName('title');
-addItem[0].style.color = 'green';
-//console.log(addItem);
-//document.all[14].style.color = 'green';
+var newDiv=document.createElement('div');
+newDiv.className='hello';
+newDiv.id='hello1';
+newDiv.setAttribute('title', 'hello div');
 
-var items= document.getElementsByClassName('list-group-item');
-//console.log(items);
-// items[2].style.backgroundColor = 'green';
-//items.style.backgroundColor ='green';
+var newDivText=document.createTextNode('Hello');
+newDiv.appendChild(newDivText);
 
-for(var i=0; i<items.length; i++)
-{
-    items[i].style.fontWeight='bold';
-}
-// var li= document.getElementsByClassName('list-outside-item');
-// //console.log(li);
-// li[0].style.color = 'red';
- //items.style.backgroundColor ='green';
+var container=document.querySelector('header .container');
+var h1=document.querySelector('header h1');
 
-// for(var i=0; i<li.length; i++)
-// {
-//     li[i].style.fontWeight='bold';
-// }
-// var secondItem=document.querySelector('.list-group-item:nth-child(3)');
-// secondItem.style.display = 'none';
+container.insertBefore(newDiv, h1);
 
-var items= document.querySelectorAll('.list-group-item');
-//console.log(items);
-items[1].style.color='green';
+var newLi=document.createElement('li');
 
-var odd= document.querySelectorAll('li:nth-child(odd)');
+var newLiText=document.createTextNode('Hello');
+newLi.appendChild(newLiText);
+console.log(newLi);
 
-for(var i=0; i<odd.length; i++){
-    odd[i].style.backgroundColor='green';
-}
+// var parent=document.querySelector(' .list-group');
+// console.log(parent.parentNode);
+var container1=document.querySelector('div .list-group');
+ var li=document.querySelector('div li');
+
+ container1.insertBefore(newLi, li);
