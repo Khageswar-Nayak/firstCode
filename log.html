@@ -53,8 +53,7 @@ function showUseronScreen(obj){
 
          const parentElem =document.getElementById('users');
         const childElem =document.createElement('li');
-        childElem.textContent = obj.name+ '-' + obj.email
-        
+        childElem.textContent = obj.name+ '-' + obj.email        
         
         let deleteBtn = document.createElement('button');
     deleteBtn.className = 'btn';
@@ -63,6 +62,20 @@ function showUseronScreen(obj){
       localStorage.removeItem(obj.name)
       parentElem.removeChild(childElem)
     }
+
+    let editBtn = document.createElement('button');
+  editBtn.className = 'btn btn-success btn-sm float-right mr-1';
+  editBtn.appendChild(document.createTextNode('Edit'));
+  editBtn.onclick = () =>{
+      localStorage.removeItem(obj.name)
+      parentElem.removeChild(childElem)
+      let name = document.getElementById('name');   
+    let email = document.getElementById('email');
+    name.value=obj.name;
+    email.value=obj.email;
+    }
+
+  childElem.appendChild(editBtn);
     childElem.appendChild(deleteBtn);
     parentElem.appendChild(childElem);
         //parentElem.innerHTML = parentElem.innerHTML + '<li> ${obj.name} - ${obj.email}'
