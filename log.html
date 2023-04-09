@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta></meta>
+    <title>JS For Beginners</title>
+    <link rel="stylesheet" href="log.css">
+  </head>
+  <body>
+    <header>
+      <h1>JS For Beginners</h1>
+    </header>
+
+    <section class="container">
+      <form id="my-form" onsubmit="addItem(event)">
+        <h1>Add User</h1>
+        <div class="msg"></div>
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" id="name">
+        </div>
+        <div>
+          <label for="email">Email:</label>
+          <input type="text" id="email">
+        </div>
+        <input class="btn" type="submit" value="Submit">
+      </form>
+
+      <ul id="users"></ul>
+
+       <ul class="items">
+        <li class="item">Item 1</li>
+        <li class="item">Item 2</li>
+        <li class="item">Item 3</li>
+      </ul> 
+    <script >
+      function addItem(event){
+    event.preventDefault();
+    const name = event.target.name.value;
+    
+    const email = event.target.email.value;
+    const obj={
+        name,
+        email
+    }
+    localStorage.setItem(obj.name, JSON.stringify(obj));
+
+    showUseronScreen(obj)
+}
+
+
+function showUseronScreen(obj){
+    
+
+         const parentElem =document.getElementById('users');
+        const childElem =document.createElement('li');
+        childElem.textContent = obj.name+ '-' + obj.email
+        
+        
+        let deleteBtn = document.createElement('button');
+    deleteBtn.className = 'btn';
+    deleteBtn.appendChild(document.createTextNode('Delete'));
+    deleteBtn.onclick = () =>{
+      localStorage.removeItem(obj.name)
+      parentElem.removeChild(childElem)
+    }
+    childElem.appendChild(deleteBtn);
+    parentElem.appendChild(childElem);
+        //parentElem.innerHTML = parentElem.innerHTML + '<li> ${obj.name} - ${obj.email}'
+    }
+    </script>
+  </body>
+</html>
