@@ -48,17 +48,28 @@
             }
             //let key = new Date().getTime()
             //localStorage.setItem(obj.ExpenceAmount, JSON.stringify(obj));
-            axios.post("https://crudcrud.com/api/753be0da0c4d4e54a09130d14dd2e33d/addExpense", obj)
-                .then((res) =>{
+            axios.post("https://crudcrud.com/api/9a9b86b7b18e4136b449d360d83c4aaf/addExpense", obj)
+                .then((res) => {
                     showUseronScreen(res.data);
-                     console.log(res);
-                }).catch((err)=>{
+                    console.log(res);
+                }).catch((err) => {
                     console.log(err);
                 })
 
             //showUseronScreen(obj)
         }
 
+        document.addEventListener("DOMContentLoaded", () => {
+            axios.get("https://crudcrud.com/api/9a9b86b7b18e4136b449d360d83c4aaf/addExpense")
+                .then((response) => {
+                    for(var i=0; i<response.data.length; i++){
+                        showUseronScreen(response.data[i]);
+                    }
+                    console.log(response);
+                }).catch((error) => {
+                    console.log(error);
+                })
+        })
 
         function showUseronScreen(obj) {
 
